@@ -444,7 +444,7 @@
             _.$prevArrow = $(_.options.prevArrow).addClass('slick-arrow');
             _.$nextArrow = $(_.options.nextArrow).addClass('slick-arrow');
 
-            if(_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3) {
+            if(_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3 && _.options.centerMode === true) {
 
                 _.$prevArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
                 _.$nextArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
@@ -722,7 +722,7 @@
 
             case 'previous':
                 slideOffset = indexOffset === 0 ? _.options.slidesToScroll : _.options.slidesToShow - indexOffset;
-                if (_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3) {
+                if (_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3 && _.options.centerMode === true) {
                     _.slideHandler(_.currentSlide - slideOffset, false, dontAnimate);
                 } else if (_.slideCount > _.options.slidesToShow) {
                     _.slideHandler(_.currentSlide - slideOffset, false, dontAnimate);
@@ -731,7 +731,7 @@
 
             case 'next':
                 slideOffset = indexOffset === 0 ? _.options.slidesToScroll : indexOffset;
-                if(_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3) {
+                if(_.slideCount === _.options.slidesToShow && _.options.slidesToShow === 3 && _.options.centerMode === true) {
                     _.slideHandler(_.currentSlide + slideOffset, false, dontAnimate);
                 }else if (_.slideCount > _.options.slidesToShow) {
                     _.slideHandler(_.currentSlide + slideOffset, false, dontAnimate);
@@ -1398,7 +1398,7 @@
     Slick.prototype.initArrowEvents = function() {
 
         var _ = this;
-        if(_.options.arrows === true && _.slideCount === _.options.slidesToShow &&  _.options.slidesToShow === 3) {
+        if(_.options.arrows === true && _.slideCount === _.options.slidesToShow &&  _.options.slidesToShow === 3 && _.options.centerMode === true) {
             _.$prevArrow
                 .off('click.slick')
                 .on('click.slick', {
@@ -2637,7 +2637,7 @@
             return;
         }
 
-        if (dontAnimate !== true && _.slideCount <= _.options.slidesToShow && _.options.slidesToShow === 3) {
+        if (dontAnimate !== true && _.slideCount <= _.options.slidesToShow && _.options.slidesToShow === 3 && _.options.centerMode === true) {
             _.animateSlide(targetLeft, function() {
                 _.postSlide(animSlide);
             });
